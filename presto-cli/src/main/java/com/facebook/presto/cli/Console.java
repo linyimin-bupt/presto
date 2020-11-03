@@ -84,6 +84,8 @@ public class Console
     public boolean run()
     {
         ClientSession session = clientOptions.toClientSession();
+        
+        // 是否在启动时指定了运行脚本(直接指定命令或者通过文件)
         boolean hasQuery = !isNullOrEmpty(clientOptions.execute);
         boolean isFromFile = !isNullOrEmpty(clientOptions.file);
 
@@ -115,6 +117,7 @@ public class Console
         AtomicBoolean exiting = new AtomicBoolean();
         ThreadInterruptor interruptor = new ThreadInterruptor();
         CountDownLatch exited = new CountDownLatch(1);
+        // 添加JVM hook
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             exiting.set(true);
             interruptor.interrupt();

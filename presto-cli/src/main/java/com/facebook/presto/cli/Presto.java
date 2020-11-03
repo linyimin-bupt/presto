@@ -28,6 +28,7 @@ public final class Presto
             return;
         }
 
+        // 命令行入口
         System.exit(console.run() ? 0 : 1);
     }
 }
