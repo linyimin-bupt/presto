@@ -100,6 +100,7 @@ public class Console
             query += ";";
         }
 
+        // 运行文件脚本
         if (isFromFile) {
             if (hasQuery) {
                 throw new RuntimeException("both --execute and --file specified");
